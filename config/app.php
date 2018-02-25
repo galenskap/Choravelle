@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Choravelle'),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Yab\Quarx\QuarxProvider::class,
 
         /*
          * Application Service Providers...
