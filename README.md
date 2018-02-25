@@ -14,6 +14,7 @@ Choravelle uses Quarx for its CMS features. To install it:
 
 - php artisan quarx:setup
 
+You will also need to build the theme. To do so, please refer to Laravel documentation [https://laravel.com/docs/5.5/mix]
 
 You should now be able to login with the default credentials:
 * User: admin@example.com

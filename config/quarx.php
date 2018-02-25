@@ -38,7 +38,7 @@ return [
      * --------------------------------------------------------------------------
     */
 
-    'live-preview' => false,
+    'live-preview' => true,
 
     /*
      * --------------------------------------------------------------------------
@@ -47,7 +47,7 @@ return [
     */
 
     'frontend-namespace' => '\App\Http\Controllers\Quarx',
-    'frontend-theme' => 'default',
+    'frontend-theme' => 'choravelle',
 
     /*
      * --------------------------------------------------------------------------
@@ -58,14 +58,14 @@ return [
     'load-modules' => true,
     'module-directory' => 'quarx/modules',
     'active-core-modules' => [
-        'blog',
+        //'blog',
         'menus',
         'files',
         'images',
         'pages',
         'widgets',
         'events',
-        'faqs',
+        //'faqs',
     ],
 
     /*
@@ -80,6 +80,7 @@ return [
 
     'languages' => [
         'en' => 'english',
+        'fr' => 'french',
     ],
 
     /*
@@ -98,9 +99,9 @@ return [
      * --------------------------------------------------------------------------
     */
 
-    'backend-title' => 'Quarx',
-    'backend-route-prefix' => 'quarx',
-    'backend-theme' => 'united', // cosmo, cyborg, flatly, lumen, paper, sandstone, simplex, united, yeti
+    'backend-title' => 'Choravelle',
+    'backend-route-prefix' => 'choravelle',
+    'backend-theme' => 'cosmo', // cosmo, cyborg, flatly, lumen, paper, sandstone, simplex, united, yeti
     'registration-available' => false,
     'pagination' => 24,
 
@@ -120,42 +121,6 @@ return [
     */
 
     'forms' => [
-        'blog' => [
-            'title' => [
-                'type' => 'string',
-            ],
-            'url' => [
-                'type' => 'string',
-            ],
-            'tags' => [
-                'type' => 'string',
-                'class' => 'tags',
-            ],
-            'entry' => [
-                'type' => 'text',
-                'class' => 'redactor',
-                'alt_name' => 'Content',
-            ],
-            'seo_description' => [
-                'type' => 'text',
-                'alt_name' => 'SEO Description',
-            ],
-            'seo_keywords' => [
-                'type' => 'string',
-                'class' => 'tags',
-                'alt_name' => 'SEO Keywords',
-            ],
-            'is_published' => [
-                'type' => 'checkbox',
-                'alt_name' => 'Published',
-            ],
-            'published_at' => [
-                'type' => 'string',
-                'class' => 'datetimepicker',
-                'alt_name' => 'Publish Date',
-                'after' => '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>',
-            ],
-        ],
 
         'images' => [
             'is_published' => [
@@ -237,26 +202,6 @@ return [
             'content' => [
                 'type' => 'text',
                 'class' => 'redactor',
-            ],
-        ],
-
-        'faqs' => [
-            'question' => [
-                'type' => 'string',
-            ],
-            'answer' => [
-                'type' => 'text',
-                'class' => 'redactor',
-            ],
-            'is_published' => [
-                'type' => 'checkbox',
-                'alt_name' => 'Published',
-            ],
-            'published_at' => [
-                'type' => 'string',
-                'class' => 'datetimepicker',
-                'alt_name' => 'Publish Date',
-                'after' => '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>',
             ],
         ],
 
