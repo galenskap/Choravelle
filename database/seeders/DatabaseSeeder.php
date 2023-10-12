@@ -12,11 +12,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\Year::factory(3)->create();
+        \App\Models\Group::factory(3)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory(10)->create()->each(function ($user) {
+            $user->years()->attach(\App\Models\Year::inRandomOrder()->first());
+        });
+
+        \App\Models\Song::factory(10)->create();
+
+        \App\Models\File::factory(20)->create()->each(function ($file) {
+            //$file->groups()->attach(\App\Models\Group::inRandomOrder()->first());
+            $file->groups()->attach(\App\Models\Group::first());
+        });
     }
 }
