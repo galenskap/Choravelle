@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Song::factory(10)->create();
 
         \App\Models\File::factory(20)->create()->each(function ($file) {
-            //$file->groups()->attach(\App\Models\Group::inRandomOrder()->first());
-            $file->groups()->attach(\App\Models\Group::first());
+            $file->groups()->attach(\App\Models\Group::inRandomOrder()->first());
+
         });
     }
 }

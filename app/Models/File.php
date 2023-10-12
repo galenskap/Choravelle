@@ -24,10 +24,12 @@ class File extends Model
     {
         $groups = $this->belongsToMany(\App\Models\Group::class);
         // if no groups are found, return a collection of one virtual default group
-        // if ($groups === null) {
-        //     $tutti = new Group();
-        //     $tutti->name = 'Tutti';
-        //     return collect([$tutti]);
-        // }
+        if ($groups === null) {
+            $tutti = new Group();
+            $tutti->name = 'Tutti';
+            return collect([$tutti]);
+        }
+        
+        return $groups;
     }
 }
