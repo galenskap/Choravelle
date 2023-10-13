@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
+    use CrudTrait;
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'path',
+        'title',
+        'filename',
+        'type',
         'song_id',
     ];
 

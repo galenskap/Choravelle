@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\FileRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class UserCrudController
+ * Class FileCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class UserCrudController extends CrudController
+class FileCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class UserCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\User::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
-        CRUD::setEntityNameStrings('user', 'users');
+        CRUD::setModel(\App\Models\File::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/file');
+        CRUD::setEntityNameStrings('file', 'files');
     }
 
     /**
@@ -47,21 +47,26 @@ class UserCrudController extends CrudController
          */
 
         CRUD::column([
-            'name' => 'name',
-            'label' => 'Nom',
+            'name' => 'title',
+            'label' => 'Nom à afficher',
+            'type' => 'text',
+        ]);
+        CRUD::column([
+            'name' => 'filename',
+            'label' => 'Nom du fichier',
             'type' => 'text',
         ]);
 
         CRUD::column([
-            'name' => 'email',
-            'label' => 'E-mail',
-            'type' => 'text',
-        ]);
-
-        CRUD::column([
-            'name' => 'group_id',
-            'label' => 'Pupitre',
+            'name' => 'song_id',
+            'label' => 'Chanson',
             'type' => 'checklist',
+        ]);
+
+        CRUD::column([
+            'name' => 'updated_at',
+            'label' => 'Dernière modification',
+            'type' => 'datetime',
         ]);
     }
 
@@ -73,7 +78,7 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UserRequest::class);
+        CRUD::setValidation(FileRequest::class);
         //CRUD::setFromDb(); // set fields from db columns.
 
         /**
@@ -81,22 +86,42 @@ class UserCrudController extends CrudController
          * - CRUD::field('price')->type('number');
          */
 
-        CRUD::field('name')->type('text')->label('Nom');
-        CRUD::field('email')->type('email')->label('E-mail');
+        CRUD::field([
+            'name' => 'title',
+            'label' => 'Nom à afficher',
+            'type' => 'text',
+        ]);
+        CRUD::field([   // Upload
+            'name'      => 'filename',
+            'label'     => 'Fichier',
+            'type'      => 'upload',
+            'withFiles' => true
+        ]);
+        CRUD::field([
+            'name' => 'type',
+            'label' => 'Type du fichier',
+            'type' => 'text',
+        ]);
+
 
         CRUD::field([  // Select
-            'label'     => "Pupitre",
+            'label'     => "Chanson",
             'type'      => 'select',
-            'name'      => 'group_id', // the db column for the foreign key
+            'name'      => 'song_id', // the db column for the foreign key
             
             // optional
             // 'entity' should point to the method that defines the relationship in your Model
             // defining entity will make Backpack guess 'model' and 'attribute'
-            'entity'    => 'group',
+            'entity'    => 'song',
             
             // optional - manually specify the related model and attribute
-            'model'     => "App\Models\Group", // related model
-            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model'     => "App\Models\Song", // related model
+            'attribute' => 'title', // foreign key attribute that is shown to user
+            
+            // optional - force the related options to be a custom query, instead of all();
+            'options'   => (function ($query) {
+                    return $query->orderBy('title', 'DESC')->get();
+            }), //  you can use this to filter the results show in the select
         ]);
     }
 

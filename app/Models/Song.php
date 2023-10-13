@@ -13,7 +13,8 @@ class Song extends Model
 
     protected $fillable = [
         'title',
-        'artist',
+        'author',
+        'lyrics',
         'year_id',
     ];
 
