@@ -9,6 +9,12 @@ class File extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'path',
+        'song_id',
+    ];
+
     /**
      * Get the song this file is about
      */
