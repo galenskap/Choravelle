@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "backpack/crud": "^6.2",
+        "backpack/pagemanager": "^3.2",
         "backpack/theme-tabler": "^1.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",

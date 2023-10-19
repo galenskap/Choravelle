@@ -6,3 +6,4 @@
 <x-backpack::menu-item title="Pupitres" icon="la la-group" :link="backpack_url('group')" />
 <x-backpack::menu-item title="Membres" icon="la la-user" :link="backpack_url('user')" />
 <x-backpack::menu-item title="Fichiers" icon="la la-archive" :link="backpack_url('file')" />
+<x-backpack::menu-item title='Pages' icon='la la-file-o' :link="backpack_url('page')" />
