@@ -14,12 +14,16 @@
         </x-slot>
 
         <x-slot name="content">
-            <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-dropdown-link :href="route('partotheque')" :active="request()->routeIs('partotheque')">
+                Partothèque
+            </x-dropdown-link>
+
+            <x-dropdown-link :href="route('trombinoscope')" :active="request()->routeIs('trombinoscope')">
+                Trombinoscope
             </x-dropdown-link>
 
             <x-dropdown-link :href="route('profile.edit')">
-                {{ __('Profile') }}
+                Mon compte
             </x-dropdown-link>
 
             <!-- Authentication -->
@@ -29,7 +33,7 @@
                 <x-dropdown-link :href="route('logout')"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                    {{ __('Log Out') }}
+                    Se déconnecter
                 </x-dropdown-link>
             </form>
         </x-slot>

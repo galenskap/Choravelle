@@ -8,7 +8,7 @@
         <x-responsive-nav-link :href="route('homepage')" :active="request()->routeIs('homepage')">
             Le Choeur
         </x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <x-responsive-nav-link :href="route('partotheque')" :active="request()->routeIs('partotheque')">
             Espace choristes
         </x-responsive-nav-link>
     </div>

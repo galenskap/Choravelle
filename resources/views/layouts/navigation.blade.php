@@ -17,7 +17,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('homepage')" :active="request()->routeIs('homepage')">
+                    <x-nav-link :href="route('a-propos')" :active="request()->routeIs('a-propos')">
                         Le choeur
                     </x-nav-link>
                 </div>

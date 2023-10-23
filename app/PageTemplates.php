@@ -20,13 +20,31 @@ trait PageTemplates
     | - page slug
     */
 
+    private function homepage()
+    {
+        $this->crud->addField([
+            'name' => 'image',
+            'label' => 'Image de couverture',
+            'type' => 'upload',
+            'fake' => true,
+            'store_in' => 'extras',
+            'withFiles' => true,
+        ]);
+        $this->crud->addField([
+            'name' => 'content',
+            'label' => 'Contenu de la page',
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+        ]);
+    }
+
     private function standard()
     {
         $this->crud->addField([
-                        'name' => 'content',
-                        'label' => trans('backpack::pagemanager.content'),
-                        'type' => 'summernote',
-                        'placeholder' => trans('backpack::pagemanager.content_placeholder'),
-                    ]);
+            'name' => 'content',
+            'label' => 'Contenu de la page',
+            'type' => 'summernote',
+            'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+        ]);
     }
 }
